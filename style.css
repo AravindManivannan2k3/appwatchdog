@@ -1,0 +1,272 @@
+/* Global Styling */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #2e2e2e;
+    padding: 20px;
+    margin: 0;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    color: #3a7bd5; /* Soft blue */
+}
+
+/* Filter Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* Horizontal layout for filters */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+
+.filter-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.filter-group select,
+.filter-group input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input[type="date"]:focus {
+    outline: none;
+    border-color: #3a7bd5;
+    box-shadow: 0 0 0 0.2rem rgba(58, 123, 213, 0.25);
+}
+
+/* Button Row */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button,
+.clear-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button {
+    background-color: #28a745; /* Modern green */
+    color: white;
+}
+
+button:hover,
+button:focus-visible {
+    background-color: #218838;
+    outline: none;
+}
+
+.clear-button {
+    background-color: #e63946; /* Soft danger red */
+    color: white;
+}
+
+.clear-button:hover,
+.clear-button:focus-visible {
+    background-color: #c82333;
+    outline: none;
+}
+
+/* Add visible focus outline for accessibility */
+button:focus-visible,
+.clear-button:focus-visible {
+    outline: 3px solid #3a7bd5;
+    outline-offset: 2px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #3a7bd5;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f8fb;
+}
+
+tr:hover {
+    background-color: #e3efff;
+}
+/* Fix text color for first column header (Serial No) */
+/* Serial Column */
+th:first-child,
+td:first-child {
+    text-align: center;
+    width: 80px;
+    font-weight: bold;
+    background-color: #f1f3f5; /* Light gray background */
+}
+
+/* Fix text color for first column header (Serial No) */
+th:first-child {
+    color: #2e2e2e;  /* dark text for visibility */
+}
+
+/* Application Highlight (optional badges) */
+td.application-name {
+    font-weight: bold;
+    color: #3a7bd5;
+}
+
+/* Daily View Toggle Link */
+td a {
+    font-size: 12px;
+    color: #3a7bd5;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    margin: 2px 5px;
+    padding: 8px 14px;
+    background-color: #3a7bd5;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background-color: #2a62b1;
+    font-weight: bold;
+}
+
+/* Responsive Table on Small Devices */
+@media (max-width: 768px) {
+    .filter-row {
+        flex-direction: column;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        border: 1px solid #dee2e6;
+        margin-bottom: 10px;
+    }
+
+    td::before {
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #555;
+        content: attr(data-label);
+    }
+}
+
+/* Chart Canvas - Improved */
+.chart-container {
+  max-width: 900px;      /* max width to match canvas width */
+  width: 100%;           /* allow it to shrink on smaller screens */
+  height: 400px;         /* fixed height */
+  margin: 0 auto 20px;   /* center horizontally and add bottom margin */
+  position: relative;    /* for positioning context if needed */
+  overflow: hidden;      /* prevent overflow */
+  box-sizing: border-box;
+}
+
+.chart-container canvas {
+  width: 100% !important;   /* fill container width */
+  height: 100% !important;  /* fill container height */
+  display: block;
+}
+
+#usagePieChart {
+    width: 100%;
+    max-width: 900px;
+    height: 400px;
+}
+#paginationBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 999;
+}
+
+body {
+  padding-bottom: 60px; /* so content isn't hidden behind fixed pagination */
+}
